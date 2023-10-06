@@ -30,6 +30,10 @@ const SwipeableDrawerLeft = ({ categories }: PageProps) => {
         setOpen(!open);
     };
 
+    const handleClose = () => {
+        setState(false);
+    };
+
     const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
         if (
             event &&
@@ -49,7 +53,7 @@ const SwipeableDrawerLeft = ({ categories }: PageProps) => {
                     <ListItemIcon>
                         <HomeIcon />
                     </ListItemIcon>
-                    <ListItemText primary={<Link href={'/'}>Trang chủ</Link>} />
+                    <ListItemText onClick={handleClose} primary={<Link href={'/'}>Trang chủ</Link>} />
                 </ListItemButton>
                 <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
@@ -59,10 +63,11 @@ const SwipeableDrawerLeft = ({ categories }: PageProps) => {
                     {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
+                    <List component="div" disablePadding className="max-md:text-base">
                         {categories.map((category) => (
                             <ListItemButton key={category.id} sx={{ pl: 4 }}>
                                 <ListItemText
+                                    onClick={handleClose}
                                     primary={<Link href={`/list-movie/${category.slug}`}>{category.name}</Link>}
                                 />
                             </ListItemButton>

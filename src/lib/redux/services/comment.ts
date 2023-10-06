@@ -15,7 +15,7 @@ type CommentInput = {
 
 export const commentApi = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: `http://localhost:3000/api/`,
+        baseUrl: `${process.env.NEXTAUTH_URL}/api/`,
         fetchFn: async (...arg) => {
             await awaitLoading();
             return await fetch(...arg);

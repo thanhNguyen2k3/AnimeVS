@@ -37,14 +37,14 @@ const page = async ({ searchParams }: Props) => {
 
     return (
         <Wrapper>
-            <div className="grid grid-cols-5 max-[820px]:grid-cols-3 max-[920px]:grid-cols-4 max-[800px]:grid-cols-3 max-sm:grid-cols-2 gap-6 overflow-hidden">
+            <div className="grid grid-cols-5 h-full max-[820px]:grid-cols-3 max-[920px]:grid-cols-4 max-[800px]:grid-cols-3 max-sm:grid-cols-2 gap-6">
                 {data.map((item) => (
                     <Link
                         key={item.id}
                         href={`/list-movie/${item.category?.slug}/${item.slug}`}
                         className="flex transition-all relative font-poppins after:absolute items-center after:right-0"
                     >
-                        <img className="h-full w-full object-cover" src={item?.thumbnail!} alt="" />
+                        <img className="min-h-[360px] h-full w-full object-cover" src={item?.thumbnail!} alt="" />
                         <div className="absolute p-4  bg-black/40 h-16 left-0 bottom-0 right-0">
                             <h3 className="truncate capitalize">{item.name}</h3>
                         </div>

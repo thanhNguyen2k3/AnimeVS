@@ -10,6 +10,14 @@ const nextConfig = {
         VERCEL_URL: 'https://anime-vs.vercel.app',
         DATABASE_URL: 'postgresql://postgres:bpivIECW0oepIuXq@db.tbxrlogvaaogawkgsazj.supabase.co:5432/postgres',
     },
+    async rewrites() {
+        return [
+            {
+                source: '/api/:path*',
+                destination: 'https://anime-vs.vercel.app/:path*',
+            },
+        ];
+    },
 };
 
 module.exports = nextConfig;

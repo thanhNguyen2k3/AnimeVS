@@ -153,7 +153,6 @@ const FormCreatePlaylistMovie = () => {
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary={file?.name} />
-                                    <ListItemText primary={useFormatBytes(file?.size as number)} />
                                     <ListItemText primary={'Vui lòng upload video lên Cloud ==▶'} />
                                     <ListItemIcon>
                                         <Tooltip title="Tải lên Cloud">

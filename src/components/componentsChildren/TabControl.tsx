@@ -16,7 +16,6 @@ import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual
 import ReactPlayer from 'react-player';
 import Link from 'next/link';
 import LoadingCircular from '../ui/loading/LoadingCircular';
-import { OnProgressProps } from 'react-player/base';
 
 type Props = {
     data: any | null;
@@ -144,36 +143,33 @@ const TabControl = ({ data }: Props) => {
                                     </div>
                                 </li>
                                 {data.showtime.length === 0 ? null : (
-                                    <ListItem title="Lịch chiếu:" children={data.showtime} />
+                                    <ListItem title="Lịch chiếu:">{data.showtime}</ListItem>
                                 )}
-                                <ListItem
-                                    title="Thể loại:"
-                                    children={data.category.name}
-                                    link
-                                    to={`/list-movie/${data.category.slug}`}
-                                />
-                                <ListItem title="Đạo diễn:" children={data.director} />
-                                <ListItem title="Quốc gia:" children={data.nation.name} link to="/" />
+                                <ListItem title="Thể loại:" link to={`/list-movie/${data.category.slug}`}>
+                                    {data.category.name}
+                                </ListItem>
+                                <ListItem title="Đạo diễn:">{data.director}</ListItem>
+                                <ListItem title="Quốc gia:" link to="/">
+                                    {data.nation.name}
+                                </ListItem>
                             </ul>
                         </li>
 
                         <li>
                             <ul>
-                                <ListItem title="Số người theo dõi:" children={data.followers.length} />
-                                <ListItem
-                                    title="Thời lượng:"
-                                    children={`${data.moviePlaylist.movieUrls.length}/${data.episode}`}
-                                />
-                                <ListItem
-                                    title="Chất lượng:"
-                                    children={
-                                        <div className="px-1 rounded-full text-center bg-secondary w-9">
-                                            {data.quality}
-                                        </div>
-                                    }
-                                />
-                                <ListItem title="Studio:" children={data.studio.name} link to="/" />
-                                <ListItem title="Season:" children={data.season.name} link to="/" />
+                                <ListItem title="Số người theo dõi:">{data.followers.length}</ListItem>
+                                <ListItem title="Thời lượng:">
+                                    {`${data.moviePlaylist.movieUrls.length}/${data.episode}`}
+                                </ListItem>
+                                <ListItem title="Chất lượng:">
+                                    <div className="px-1 rounded-full text-center bg-secondary w-9">{data.quality}</div>
+                                </ListItem>
+                                <ListItem title="Studio:" link to="/">
+                                    {data.studio.name}
+                                </ListItem>
+                                <ListItem title="Season:" link to="/">
+                                    {data.season.name}
+                                </ListItem>
                             </ul>
                         </li>
                     </ul>

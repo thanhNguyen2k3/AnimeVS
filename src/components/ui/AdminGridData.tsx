@@ -175,12 +175,13 @@ const AdminGridData = ({ data }: Props) => {
             type: 'actions',
             getActions: ({ id, row }: GridRowParams) => {
                 return [
-                    <IconButton aria-label="edit">
+                    <IconButton key={id} aria-label="edit">
                         <Link href={`movies/update/${id}`}>
                             <EditIcon />
                         </Link>
                     </IconButton>,
                     <AlertModelConfirmDelete
+                        key={id}
                         movie={row}
                         id={id as string}
                         promise={() => handleSoftDelete(id as string, row)}

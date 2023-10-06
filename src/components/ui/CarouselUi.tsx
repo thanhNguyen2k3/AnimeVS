@@ -79,7 +79,11 @@ const CarouselUi = () => {
             <Slider {...setting}>
                 {items.map((item, i) => (
                     <div className="flex relative items-center font-poppins" key={i}>
-                        <img className="h-[600px] max-md:h-[380px] w-full object-cover object-center" src={item.url} />
+                        <img
+                            className="h-[600px] max-md:h-[380px] w-full object-cover object-center"
+                            src={item.url}
+                            alt=""
+                        />
                         <div className="absolute  top-0 left-0 bottom-0 right-0 bg-gradient-to-r from-black/80 to-gray-500/30">
                             <div className="max-w-[500px] max-md:left-10 max-md:right-10 max-md:max-w-full absolute max-md:bottom-8 bottom-20 left-10 right-10">
                                 <div className="w-full max-md:flex max-md:justify-center flex-col items-center">

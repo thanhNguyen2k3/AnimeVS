@@ -8,7 +8,7 @@ const CategoryRenderList = async () => {
     return (
         <div className="grid grid-cols-4">
             {categories.map((category) => (
-                <p>{category.name}</p>
+                <p key={category.id}>{category.name}</p>
             ))}
         </div>
     );

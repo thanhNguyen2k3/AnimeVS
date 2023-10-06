@@ -58,7 +58,7 @@ const ListMovie = ({ data, selectItem }: Props) => {
                     href={`/list-movie/${item?.category?.slug}/${item.slug}`}
                     className="flex transition-all relative font-poppins after:absolute items-center after:right-0"
                 >
-                    <img className="h-[400px] max-md:h-[260px] w-full object-cover" src={item?.thumbnail!} />
+                    <img className="h-[400px] max-md:h-[260px] w-full object-cover" src={item?.thumbnail!} alt="" />
                     <div className="absolute p-4  bg-black/40 h-16 left-0 bottom-0 right-0">
                         <h3 className="truncate capitalize">{item.name}</h3>
                     </div>

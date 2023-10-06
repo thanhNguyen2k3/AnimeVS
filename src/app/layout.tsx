@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'react-loading-skeleton/dist/skeleton.css';
-import 'node_modules/video-react/dist/video-react.css';
 
 export const metadata: Metadata = {
     title: 'Hello anh em',

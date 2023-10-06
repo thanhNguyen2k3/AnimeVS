@@ -1,7 +1,6 @@
 'use client';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Rating from '@mui/material/Rating';
 import { useState } from 'react';
 import Divider from '@mui/material/Divider';

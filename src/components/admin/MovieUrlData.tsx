@@ -116,12 +116,12 @@ const MovieUrlData = ({ data }: Props) => {
             type: 'actions',
             getActions: ({ id, row }: GridRowParams) => {
                 return [
-                    <IconButton aria-label="edit">
+                    <IconButton key={id}>
                         <Link href={`video-url/${id}`}>
                             <EditIcon />
                         </Link>
                     </IconButton>,
-                    <AlertModelConfirmDelete movie={row} id={id as string} />,
+                    <AlertModelConfirmDelete key={id} movie={row} id={id as string} />,
                 ];
             },
         },

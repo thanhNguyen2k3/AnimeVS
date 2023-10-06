@@ -110,7 +110,7 @@ const CategoryRenderData = ({ data }: PageProps) => {
             type: 'actions',
             getActions: ({ id }: GridRowParams) => {
                 return [
-                    <IconButton aria-label="edit">
+                    <IconButton key={id} aria-label="edit">
                         <Link href={`category/${id}`}>
                             <EditIcon />
                         </Link>

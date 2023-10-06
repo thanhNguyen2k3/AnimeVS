@@ -41,11 +41,12 @@ const page = async ({ params: { category }, searchParams }: DynamicParams) => {
         <Wrapper>
             <div className="grid grid-cols-5 max-[820px]:grid-cols-3 max-[920px]:grid-cols-4 max-[800px]:grid-cols-3 max-sm:grid-cols-2 gap-6 overflow-hidden">
                 {existingMovieByCategory.map((item: any) => (
-                    <a
+                    <Link
+                        key={item.id}
                         href={`/list-movie/${item.category.slug}/${item.slug}`}
                         className="flex transition-all relative font-poppins after:absolute items-center after:right-0"
                     >
-                        <img className="h-full w-full object-cover" src={item?.thumbnail!} />
+                        <img className="h-full w-full object-cover" src={item?.thumbnail!} alt="" />
                         <div className="absolute p-4  bg-black/40 h-16 left-0 bottom-0 right-0">
                             <h3 className="truncate capitalize">{item.name}</h3>
                         </div>
@@ -56,7 +57,7 @@ const page = async ({ params: { category }, searchParams }: DynamicParams) => {
                             <p className="text-gray-400">Studio: {item.studio?.name}</p>
                             <p>{item.description.slice(0, 260)}...</p>
                         </div>
-                    </a>
+                    </Link>
                 ))}
             </div>
             {existingMovieByCategory.length === 0 ? (

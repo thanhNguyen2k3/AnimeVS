@@ -114,14 +114,14 @@ const TrashTable = ({ data }: Props) => {
             headerName: 'Actions',
             width: 200,
             type: 'actions',
-            getActions: ({ id, row }: GridRowParams) => {
+            getActions: ({ id }: GridRowParams) => {
                 return [
-                    <IconButton aria-label="edit">
+                    <IconButton key={id} aria-label="edit">
                         <Link href={`movies/update/${id}`}>
                             <EditIcon />
                         </Link>
                     </IconButton>,
-                    <IconButton aria-label="delete">
+                    <IconButton key={id} aria-label="delete">
                         <DeleteIcon />
                     </IconButton>,
                 ];

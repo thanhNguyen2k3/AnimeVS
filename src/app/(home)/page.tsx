@@ -9,7 +9,7 @@ import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import { db } from '@/lib/db';
 import BlogList from '@/components/page/BlogList';
 import Link from 'next/link';
-import Footer from '@/components/page/Footer';
+
 import { awaitLoading } from '@/utils/awaitLoading';
 
 export const dynamic = 'force-dynamic';

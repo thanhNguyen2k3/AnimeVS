@@ -28,11 +28,11 @@ const Post = ({ post }: PageProps) => {
                                 </div>
                                 <div className="flex-1 mb-5">
                                     <span className="block mb-2 text-xs font-semibold text-blue-700 uppercase dark:text-blue-300">
-                                        {post.title}
+                                        {post.text}
                                     </span>
                                     <h2 className="text-base font-bold leading-8 text-black lg:text-xl dark:text-white">
                                         {' '}
-                                        {post.content}
+                                        {post.text}
                                     </h2>
                                 </div>
                             </div>
@@ -110,10 +110,7 @@ const Post = ({ post }: PageProps) => {
                                 id="dropdownComment1"
                                 className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
                             >
-                                <ul
-                                    className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownMenuIconHorizontalButton"
-                                >
+                                <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                                     <li>
                                         <a
                                             href="#"
@@ -211,10 +208,7 @@ const Post = ({ post }: PageProps) => {
                                 id="dropdownComment2"
                                 className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
                             >
-                                <ul
-                                    className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownMenuIconHorizontalButton"
-                                >
+                                <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                                     <li>
                                         <a
                                             href="#"
@@ -308,10 +302,7 @@ const Post = ({ post }: PageProps) => {
                                 id="dropdownComment4"
                                 className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
                             >
-                                <ul
-                                    className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownMenuIconHorizontalButton"
-                                >
+                                <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                                     <li>
                                         <a
                                             href="#"

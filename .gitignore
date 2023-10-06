@@ -11,6 +11,7 @@
 # next.js
 /.next/
 /out/
+/next.config.js
 
 # production
 /build
@@ -38,3 +39,5 @@ next-env.d.ts
 
 # prisma
 /prisma/migrations
+
+

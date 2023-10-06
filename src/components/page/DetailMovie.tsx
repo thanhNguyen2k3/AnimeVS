@@ -9,7 +9,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import StarIcon from '@mui/icons-material/Star';
 import { increaView } from '@/utils/api/increaView';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 type Props = {
     data: any;
@@ -33,15 +33,11 @@ function getLabelText(value: number) {
 }
 
 const DetailMovie = ({ data }: Props) => {
-    const router = useRouter();
-
     const [value, setValue] = useState<number | null>(2);
     const [hover, setHover] = useState(-1);
 
     const onReduceViewsWhenClick = async () => {
         await increaView(data.id, data);
-
-        router.push(`${data.slug}/watch?ep=1`);
     };
 
     return (
@@ -54,7 +50,7 @@ const DetailMovie = ({ data }: Props) => {
 
                 <div className="flex px-4 py-6 gap-4 relative z-50 bg-black/70 flex-wrap justify-center">
                     <div className="relative cursor-pointer" onClick={onReduceViewsWhenClick}>
-                        <div>
+                        <Link href={`${data.slug}/watch?ep=1`}>
                             <img className="w-[180px] h-[260px] object-cover " src={data?.thumbnail!} alt="" />
                             <div className="absolute opacity-0 hover:opacity-100 flex items-center justify-center top-0 left-0 bottom-0 right-0 hover:bg-black/70 transition-all">
                                 <div className="border w-12 h-12 flex items-center justify-center rounded-full border-white">
@@ -66,7 +62,7 @@ const DetailMovie = ({ data }: Props) => {
                             <div className="absolute uppercase text-black bottom-4 bg-primary/90 flex items-center justify-center w-full h-10">
                                 Xem phim
                             </div>
-                        </div>
+                        </Link>
                     </div>
 
                     <div className="space-y-2">

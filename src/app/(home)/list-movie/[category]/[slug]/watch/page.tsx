@@ -2,7 +2,6 @@ import CommentSectionServer from '@/components/CommentSectionServer';
 import WatchMovie from '@/components/page/WatchMovie';
 import { db } from '@/lib/db';
 import { awaitLoading } from '@/utils/awaitLoading';
-import ReactPlayer from 'react-player';
 
 type Params = {
     params: {

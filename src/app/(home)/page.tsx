@@ -120,7 +120,7 @@ const page = async () => {
 
                     <h1>Bạn vẫn đang tìm thứ gì đó để xem? Kiểm tra thư viện đầy đủ của chúng tôi</h1>
 
-                    <button className="border-[4px] hover:border-primary/90 hover:text-primary/90 border-primary px-6 py-2 text-lg font-semibold text-primary ">
+                    <button className="border-[4px] max-md:text-sm hover:border-primary/90 hover:text-primary/90 border-primary px-6 py-2 text-lg font-semibold text-primary ">
                         <Link href="/list-movie">VIEW ALL</Link>
                     </button>
                 </div>

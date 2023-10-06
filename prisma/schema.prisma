@@ -1,0 +1,174 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RatingType {
+  UP
+  DOWN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  isAdmin       Boolean   @default(false)
+  username      String?   @unique
+
+  image    String?
+  accounts Account[]
+  sessions Session[]
+  follows  Movie[]
+  comments Comment[]
+  ratings  Rating[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Movie {
+  id            String         @id @default(cuid())
+  name          String
+  subname       String
+  description   String
+  moviePlaylist MoviePlaylist? @relation(fields: [movieParentId], references: [id])
+  movieParentId String?
+  category      Category?      @relation(fields: [categoryId], references: [id])
+  categoryId    String?
+  director      String
+  nation        Nation?        @relation(fields: [nationId], references: [id])
+  nationId      String?
+  showtime      String?
+  followers     User[]
+  views         Int            @default(0)
+  episode       String?
+  status        String?
+  quality       String
+  studio        Studio?        @relation(fields: [studioId], references: [id])
+  studioId      String?
+  season        Season?        @relation(fields: [seasonId], references: [id])
+  seasonId      String?
+  thumbnail     String?
+  images        String[]
+  rating        Rating[]
+  characters    String[]
+  comments      Comment[]
+  deleted       Boolean        @default(false)
+  slug          String?        @unique
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String
+  movies    Movie[]
+  slug      String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MoviePlaylist {
+  id           String     @id @default(cuid())
+  playlistName String?
+  trailer      String?
+  movieUrls    MovieUrl[]
+  Movie        Movie[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model MovieUrl {
+  id            String         @id @default(cuid())
+  url           String
+  episode       String
+  MovieParent   MoviePlaylist? @relation(fields: [movieParentId], references: [id])
+  movieParentId String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model Nation {
+  id    String  @id @default(cuid())
+  name  String
+  Movie Movie[]
+}
+
+model Studio {
+  id    String  @id @default(cuid())
+  name  String
+  Movie Movie[]
+}
+
+model Season {
+  id    String  @id @default(cuid())
+  name  String
+  Movie Movie[]
+}
+
+model Rating {
+  user    User       @relation(fields: [userId], references: [id])
+  userId  String
+  movie   Movie      @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  movieId String
+  type    RatingType
+
+  @@id([userId, movieId])
+}
+
+model Comment {
+  id      String @id @default(cuid())
+  text    String
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+  movie   Movie  @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  movieId String
+
+  replyToId String?
+  replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replies   Comment[] @relation("ReplyTo")
+
+  commentId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
